@@ -5,7 +5,12 @@ const fs = require ('fs')
 const [, , action, type, item] = process.argv
 
 const addFavorites = () => {
-  fs.appendFile(`${type}.txt`, `${item}, `, err => {
+  let favorite = ''
+  for (let i = 4; i < process.argv.length; i++) {
+    favorite += `${process.argv[i]} `
+  }
+  
+  fs.appendFile(`${type}.txt`, `${favorite}, `, err => {
     if (err) { console.log(err) }
   })
 }
